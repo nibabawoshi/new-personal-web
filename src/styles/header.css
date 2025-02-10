@@ -1,0 +1,146 @@
+/* header.css */
+:root {
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --text-primary: #2d3436;
+    --primary-color: #6c5ce7;
+    --transition-speed: 0.3s;
+  }
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 80px;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all var(--transition-speed) ease;
+  }
+  
+  .header.scrolled {
+    height: 60px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .desktop-nav ul {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+  }
+  
+  .nav-link:hover,
+  
+  .nav-link.active {
+    color: var(--primary-color);
+    background: rgba(108, 92, 231, 0.1);
+  }
+  
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 3px;
+    background: var(--primary-color);
+  }
+  
+  .mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5 rem;
+    z-index: 1001;
+  }
+  
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 1;
+    height: 100vh; /* 让它从顶部到底部 */
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background: #a29bfe; /* 修改为纯白色 */
+    padding: 1rem;
+    border-radius: 12px; /* 适度圆角 */
+    box-shadow: -5px 0 25px rgba(211, 8, 8, 0.1);
+  }
+  
+  .mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .mobile-nav .nav-link {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+      background: #fdcb6e; /* 修改为纯白色 */
+
+    }
+  
+    .mobile-menu-button {
+      display: block;
+    }
+  
+    .header {
+      padding: 0 1.5rem;
+    }
+  }
+  /* 添加菜单打开时的背景遮罩 */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* 半透明遮罩 */
+  z-index: 999; /* 在菜单下方 */
+}
+
+  /* 暗黑模式支持 */
+  @media (prefers-color-scheme: dark) {
+    .mobile-nav {
+        background: #222222; /* 深色背景 */
+    }
+  }
